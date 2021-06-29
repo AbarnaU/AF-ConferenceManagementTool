@@ -31,7 +31,20 @@ class Navbar extends Component {
                 </Link>
                 <div className="collapse navbar-collapse" id="collapse-navbar">
                     {
-                        sessionStorage.getItem('userType') === 'editor' ?
+                        sessionStorage.getItem('userType')  === null ?
+                        (
+                                <ul className="navbar-nav text-justify mr-auto">
+                                    <li className="navbar-item ">
+                                        <Link to='/download' className="nav-link">Templates</Link>
+                                    </li>
+                                    <Link to="/login">
+                                        <input type="button" className="btn btn-outline-light "  value="Login"/>
+                                    </Link>
+                                </ul>
+                           
+                            
+                        )
+                        :sessionStorage.getItem('userType') === 'editor' ?
                             (
                                 <ul className="navbar-nav text-justify mr-auto">
                                     <li className="navbar-item ">

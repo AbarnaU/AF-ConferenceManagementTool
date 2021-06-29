@@ -24,6 +24,7 @@ app.use('/editor/conference',require('./routes/editorConferenceRoutes'));
 app.use('/admin/notifications',require('./routes/adminNotificationRoutes'));
 app.use('/post',require('./routes/adminAcceptPostRoutes'));
 app.use('/user/conference',require('./routes/userViewPostRouter'));
+app.use('/editor/file',require('./routes/fileUploadRoutes'));
 
 app.listen(4000, function () {
     console.log("Server is running on Port: " + 4000);

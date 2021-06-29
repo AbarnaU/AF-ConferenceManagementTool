@@ -129,6 +129,7 @@ class StaffEdit extends Component{
                                                 <option>-Choose Role-</option>
                                                 <option>Editor</option>
                                                 <option>Admin</option>
+                                                <option>Reviewer</option>
                                             </select>
                                         </div> 
                                         <div class="col-lg-6 col-md-6 form-group">                                  

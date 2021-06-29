@@ -165,6 +165,7 @@ class StaffAdd extends Component{
                                                 <option selected>Select Role</option>
                                                 <option>Editor</option>
                                                 <option>Admin</option>
+                                                <option>Reviewer</option>
                                             </select>
                                         </div> 
                                     </div>

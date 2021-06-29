@@ -6,6 +6,7 @@ import NavBar from './components/user/Navbar'
 import Home from "./components/user/Home";
 import Login from './components/user/Login'
 import ConferenceDetails from './components/user/ConferenceDetails';
+import Download from './components/user/Download';
 
 import AdminHome from './components/admin/AdminHome';
 import StaffAdd from './components/admin/staff/StaffAdd';
@@ -19,6 +20,7 @@ import ConferenceAdd from './components/editor/ConferenceAdd';
 import ConferenceView from './components/editor/ConferenceView'
 import ConferenceEdit from './components/editor/ConferenceEdit';
 import ConferenceStatus from './components/editor/ConferenceStatus';
+import FileUpload from './components/editor/FileUpload';
 
 
 function App() { 
@@ -30,6 +32,7 @@ function App() {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/conferences/:name" component={ConferenceDetails}/>
                 <Route exact path="/login" component={Login}/>
+                <Route exact path="/download" component={Download}/>
             </div>
         </div>
         {
@@ -50,6 +53,7 @@ function App() {
                                 <Route exact path='/conference/view' component={ConferenceView}/>
                                 <Route exact path='/conference/edit/:id' component={ConferenceEdit}/>
                                 <Route exact path='/conference/status' component={ConferenceStatus}/>
+                                <Route exact path='/file/upload' component={FileUpload}/>
                             </Switch>
                         </div>
                     
