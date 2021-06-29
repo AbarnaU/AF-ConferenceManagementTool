@@ -75,7 +75,7 @@ class UserLogin extends Component {
                     )
                     sessionStorage.setItem('userType', 'attendee')
                     console.log(sessionStorage.userId)
-                    window.location.assign('/home')
+                    window.location.assign('/displayattendee')
                   }
                 },
               )
