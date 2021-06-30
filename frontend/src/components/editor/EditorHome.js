@@ -21,7 +21,7 @@ class EditorHome extends Component {
                                 <Link to={'/conference/status'}><Button color="success" style={{width:"140px",height:"140px"}}><span><i className="fa fa-hourglass-start"/></span> <br/>Conference Status</Button></Link>
                             </div>
                             <div class="col-lg-3 col-md-3 admin-icon">
-                                <Link to={''}><Button color="danger" style={{width:"140px",height:"140px"}}><span ><i className="fa fa-user"/></span> <br/>Bookmark</Button></Link>
+                                <Link to={'/file/upload'}><Button color="danger" style={{width:"140px",height:"140px"}}><span ><i className="fa fa-file"/></span> <br/>Templete Upload</Button></Link>
                             </div>
                         </div>    
                     </div>

@@ -34,37 +34,51 @@ class Navbar extends Component {
         <Link to="" className="navbar-brand">
           ICAF
         </Link>
-        <div className="collapse navbar-collapse" id="collapse-navbar">
-          {sessionStorage.getItem('userType') === 'editor' ? (
-            <ul className="navbar-nav text-justify mr-auto">
-              <li className="navbar-item ">
-                <Link to="/home" className="nav-link">
-                  Home
-                </Link>
-              </li>
-            </ul>
-          ) : sessionStorage.getItem('userType') === 'reviewer' ? (
-            <ul className="navbar-nav text-justify mr-auto">
-              <li className="navbar-item ">
-                <Link to="/home" className="nav-link">
-                  Home
-                </Link>
-              </li>
-            </ul>
-          ) : sessionStorage.getItem('userType') === 'admin' ? (
-            <ul className="navbar-nav text-justify mr-auto">
-              <li className="navbar-item ">
-                <Link to="/home" className="nav-link">
-                  Home
-                </Link>
-              </li>
-            </ul>
-          ) : null}
-          {sessionStorage.loggedUser ? afterLogin : null}
-        </div>
-      </nav>
-    )
-  }
+                <div className="collapse navbar-collapse" id="collapse-navbar">
+                    {
+                        sessionStorage.getItem('userType')  === null ?
+                        (
+                                <ul className="navbar-nav text-justify mr-auto">
+                                    <li className="navbar-item ">
+                                        <Link to='/download' className="nav-link">Templates</Link>
+                                    </li>
+                                    <Link to="/login">
+                                        <input type="button" className="btn btn-outline-light "  value="Login"/>
+                                    </Link>
+                                </ul>
+                           
+                            
+                        )
+                        :sessionStorage.getItem('userType') === 'editor' ?
+                            (
+                                <ul className="navbar-nav text-justify mr-auto">
+                                    <li className="navbar-item ">
+                                        <Link to='/home' className="nav-link">Home</Link>
+                                    </li>
+                                    
+                                </ul>
+                            )
+                            : sessionStorage.getItem('userType') === 'reviewer' ?
+                            (
+                                <ul className="navbar-nav text-justify mr-auto">
+                                    <li className="navbar-item ">
+                                        <Link to='/home' className="nav-link">Home</Link>
+                                    </li>
+                                </ul>
+                            ) : sessionStorage.getItem('userType') === 'admin' ?
+                                (
+                                    <ul className="navbar-nav text-justify mr-auto">
+                                        <li className="navbar-item ">
+                                            <Link to='/home' className="nav-link">Home</Link>
+                                        </li>
+                                    </ul>
+                                ) : null
+                    }
+                    {sessionStorage.loggedUser ? afterLogin :  null}
+                </div>
+            </nav>
+        );
+    }
 }
 
 export default Navbar
