@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-class Login extends Component {
+class UserLogin extends Component {
   constructor(props) {
     super(props)
 
@@ -15,7 +15,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      userType: 'UserType',
+      userType: 'attendee',
     }
   }
 
@@ -58,9 +58,11 @@ class Login extends Component {
     }
 
     if (this.validateType()) {
-      if (this.state.userType === 'researcher') {
+      if (this.state.userType === 'attendee') {
         axios
-          .post('http://localhost:4000/students/login', user)
+          .post('http://localhost:4000/attendees/login', user, {
+            loading: true,
+          })
           .then((response) => {
             if (response.data.result) {
               Swal.fire('Done', 'Login sucessfully !', 'success').then(
@@ -71,42 +73,9 @@ class Login extends Component {
                       'loggedUser',
                       response.data.data.email,
                     )
-                    sessionStorage.setItem('userType', 'researcher')
-                    window.location.assign('/home')
-                  }
-                },
-              )
-            } else {
-              Swal.fire('Oops...', 'Invalid Password or User Id', 'error')
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      } else if (
-        this.state.userType === 'editor' ||
-        this.state.userType === 'admin'
-      ) {
-        axios
-          .post('http://localhost:4000/staffs/login', user)
-          .then((response) => {
-            if (response.data.result) {
-              Swal.fire('Done', 'Login sucessfully !', 'success').then(
-                (result) => {
-                  if (result.value) {
-                    sessionStorage.setItem('userId', response.data.data._id)
-                    sessionStorage.setItem(
-                      'loggedUser',
-                      response.data.data.email,
-                    )
-
-                    if (response.data.data.role === 'Admin') {
-                      sessionStorage.setItem('userType', 'admin')
-                      window.location.assign('/home')
-                    } else {
-                      sessionStorage.setItem('userType', 'editor')
-                      window.location.assign('/home')
-                    }
+                    sessionStorage.setItem('userType', 'attendee')
+                    console.log(sessionStorage.userId)
+                    window.location.assign('/displayattendee')
                   }
                 },
               )
@@ -126,7 +95,7 @@ class Login extends Component {
       <div className="container" style={{ paddingTop: '70px' }}>
         <div class="admin-content-widget admin-login-widget light-gray-bg ">
           <header class="text-center">
-            <h1>ICAF Login</h1>
+            <h1>ICAF User Login</h1>
           </header>
           <form class="admin-login-form" onSubmit={this.handleLoginSubmit}>
             <div class="form-group">
@@ -139,11 +108,11 @@ class Login extends Component {
                 <select
                   className="form-control"
                   onChange={this.onChangeUserType}
+                  placeholder="Select User Type"
                 >
-                  <option value="UserType">Select User Type</option>
+                  <option value="attendee">Attendee</option>
+                  <option value="workshopconducter">workshop Conducter</option>
                   <option value="researcher">Researcher</option>
-                  <option value="editor">Editor</option>
-                  <option value="admin">Admin</option>
                 </select>
               </div>
             </div>
@@ -159,7 +128,7 @@ class Login extends Component {
                   class="form-control"
                   id="email"
                   name="email"
-                  placeholder="js@dashboard.com"
+                  placeholder="Email"
                   value={this.state.email}
                   onChange={this.onChangeEmail}
                 />
@@ -177,7 +146,7 @@ class Login extends Component {
                   class="form-control"
                   id="password"
                   name="password"
-                  placeholder="*******"
+                  placeholder="Password"
                   value={this.state.password}
                   onChange={this.onChangePassword}
                 />
@@ -206,4 +175,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default UserLogin

@@ -8,7 +8,7 @@ class ConferenceAdd extends Component{
     constructor(props) {
         super(props);
 
-        this.state = { 
+        this.state = {
             visible: false,
             name:'',
             about:'',
@@ -46,7 +46,7 @@ class ConferenceAdd extends Component{
 
         if(bool)
             staffs.push(id)
-            
+
         else
             staffs.splice(id,1);
 
@@ -55,7 +55,7 @@ class ConferenceAdd extends Component{
         },()=>{
             console.log(this.state.checkedStaffs)
         })
-            
+
 
     }
 
@@ -94,7 +94,6 @@ class ConferenceAdd extends Component{
             organizer,
             staffs
         }
-
         axios.post('http://localhost:4000/editor/conference/add',conference)
             .then(
                 (res)=>{
@@ -126,7 +125,7 @@ class ConferenceAdd extends Component{
                         'success'
                         )
 
-                    this.props.history.push('/conference/view')                      
+                    this.props.history.push('/conference/view')
                 },
                 (err)=>{
                     console.log(err)
@@ -153,76 +152,76 @@ class ConferenceAdd extends Component{
                                     <h4 className="pb-4">Add New Conference</h4>
                                 <form id='staffForm' onSubmit={this.onFormSubmit}>
                                     <div className="row form-group">
-                                        <div className="col-lg-6 col-md-6 form-group">                  
+                                        <div className="col-lg-6 col-md-6 form-group">
                                             <label>Conference Name</label>
-                                            <input 
-                                                name="name" 
-                                                placeholder="Conference Name" 
-                                                className="form-control" 
+                                            <input
+                                                name="name"
+                                                placeholder="Conference Name"
+                                                className="form-control"
                                                 required="required"
                                                 type="text"
                                                 onChange={this.onValueChange}
-                                                value={this.state.name} />                 
+                                                value={this.state.name} />
                                         </div>
-                                        <div className="col-lg-6 col-md-6 form-group">                  
+                                        <div className="col-lg-6 col-md-6 form-group">
                                             <label>About</label>
-                                            <textarea 
-                                                    className="form-control" 
-                                                    name="about" 
+                                            <textarea
+                                                    className="form-control"
+                                                    name="about"
                                                     rows="1"
                                                     placeholder="About"
                                                     onChange={this.onValueChange}
-                                                    value={this.state.about}/>                     
-                                        </div> 
+                                                    value={this.state.about}/>
+                                        </div>
                                     </div>
                                     <div className="row form-group">
-                                        <div className="col-lg-6 col-md-6 form-group">                  
+                                        <div className="col-lg-6 col-md-6 form-group">
                                             <label>Start Date</label>
-                                                <input 
-                                                    name="startdate" 
-                                                    placeholder="Start Date" 
-                                                    className="form-control" 
-                                                    required="required" 
+                                                <input
+                                                    name="startdate"
+                                                    placeholder="Start Date"
+                                                    className="form-control"
+                                                    required="required"
                                                     type="date"
                                                     onChange={this.onValueChange}
-                                                    value={this.state.startdate} />              
-                                        </div> 
-                                        <div className="col-lg-6 col-md-6 form-group">                  
+                                                    value={this.state.startdate} />
+                                        </div>
+                                        <div className="col-lg-6 col-md-6 form-group">
                                             <label>End Date</label>
-                                                <input 
-                                                    name="enddate" 
-                                                    placeholder="End Date" 
-                                                    className="form-control" 
-                                                    required="required" 
+                                                <input
+                                                    name="enddate"
+                                                    placeholder="End Date"
+                                                    className="form-control"
+                                                    required="required"
                                                     type="date"
                                                     onChange={this.onValueChange}
-                                                    value={this.state.enddate} /> 
-                                        </div> 
+                                                    value={this.state.enddate} />
+                                        </div>
                                     </div>
                                     <div className="row form-group">
-                                        <div class="col-lg-6 col-md-6 form-group">                                  
+                                        <div class="col-lg-6 col-md-6 form-group">
                                             <label>Venue</label>
-                                                <input 
-                                                    name="venue" 
-                                                    placeholder="Conference Venue" 
-                                                    className="form-control" 
+                                                <input
+                                                    name="venue"
+                                                    placeholder="Conference Venue"
+                                                    className="form-control"
                                                     required="required"
                                                     type="text"
                                                     onChange={this.onValueChange}
-                                                    value={this.state.venue} />   
+                                                    value={this.state.venue} />
                                         </div>
-                                        <div className="col-lg-6 col-md-6 form-group">                  
+                                        <div className="col-lg-6 col-md-6 form-group">
                                             <label >Organizer</label>
-                                                <input 
-                                                    name="organizer" 
+                                                <input
+                                                    name="organizer"
                                                     placeholder="Organizer"
                                                     className="form-control"
                                                     required="required"
                                                     type="text"
                                                     onChange={this.onValueChange}
-                                                    value={this.state.organizer} />               
-                                        </div>  
-                                    </div>  
+                                                    value={this.state.organizer} />
+                                        </div>
+                                    </div>
                                     <div className="col-md-12 text-center">
                                         <h5 className="pb-4">Assign To</h5>
                                         <div className="admin-content-widget no-padding">
@@ -236,14 +235,14 @@ class ConferenceAdd extends Component{
                                                         </tr>
                                                     </thead>
                                                         {this.fillStaff()}
-                                                </table>   
+                                                </table>
                                             </div>
-                                        </div>  
-                                     </div>  
+                                        </div>
+                                     </div>
                                     <div className="form-group text-center">
                                         <button type="submit"className="admin-blue-button">Add</button>
-                                    </div>   
-                                </form>                            
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </section>

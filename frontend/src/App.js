@@ -1,34 +1,42 @@
-import React from 'react';
-import {BrowserRouter, Route,Switch} from "react-router-dom";
-import './assert/css/admin/admin2.css';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import './assert/css/admin/admin2.css'
 
 import NavBar from './components/user/Navbar'
-import Home from "./components/user/Home";
+import Home from './components/user/Home'
 import Login from './components/user/Login'
-import ConferenceDetails from './components/user/ConferenceDetails';
+import ConferenceDetails from './components/user/ConferenceDetails'
+import UserLogin from './components/FrontLogin'
 import Download from './components/user/Download';
 
-import AdminHome from './components/admin/AdminHome';
-import StaffAdd from './components/admin/staff/StaffAdd';
-import StaffView from './components/admin/staff/StaffView';
-import StaffEdit from './components/admin/staff/StaffEdit';
-import PublishedConference from './components/admin/PublishedConference';
-import AdminNotification from './components/admin/AdminNotifications';
 
-import EditorHome from './components/editor/EditorHome';
-import ConferenceAdd from './components/editor/ConferenceAdd';
+import AdminHome from './components/admin/AdminHome'
+import StaffAdd from './components/admin/staff/StaffAdd'
+import StaffView from './components/admin/staff/StaffView'
+import StaffEdit from './components/admin/staff/StaffEdit'
+import PublishedConference from './components/admin/PublishedConference'
+import AdminNotification from './components/admin/AdminNotifications'
+
+import EditorHome from './components/editor/EditorHome'
+import ConferenceAdd from './components/editor/ConferenceAdd'
 import ConferenceView from './components/editor/ConferenceView'
-import ConferenceEdit from './components/editor/ConferenceEdit';
-import ConferenceStatus from './components/editor/ConferenceStatus';
+import ConferenceEdit from './components/editor/ConferenceEdit'
+import ConferenceStatus from './components/editor/ConferenceStatus'
 import FileUpload from './components/editor/FileUpload';
 
+import AddAttendee from './components/Attendee/Add_attendee'
+import DisplayAttendee from './components/Attendee/displayAttendee'
+import EditAttendee from './components/Attendee/EditAttendee'
 
-function App() { 
+function App() {
   return (
     <BrowserRouter>
-        <NavBar/>
-        <div>
-            <div className="container">
+      <NavBar/
+            <div>
+              <div className="container">
+                <Route exact path="/addattendee" component={AddAttendee} />
+                <Route exact path="/displayattendee" component={DisplayAttendee} />
+                <Route exact path="/editattendee" component={EditAttendee} />
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/conferences/:name" component={ConferenceDetails}/>
                 <Route exact path="/login" component={Login}/>
@@ -73,7 +81,7 @@ function App() {
                         ) : null
             }
     </BrowserRouter>
-    );
+  )
 }
 
-export default App;
+export default App
