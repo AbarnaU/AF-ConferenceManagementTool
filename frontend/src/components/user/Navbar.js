@@ -35,13 +35,23 @@ class Navbar extends Component {
                         (
                                 <ul className="navbar-nav text-justify mr-auto">
                                     <li className="navbar-item ">
-                                        <Link to='/addattendee' className="nav-link">Register Attendee</Link>
+                                        <Link to='/upcomingEvent' className="nav-link">Upcomming Event</Link>
                                     </li>
                                     <li className="navbar-item ">
                                         <Link to='/download' className="nav-link">Templates</Link>
                                     </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Register
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <Link to='/addattendee' class="dropdown-item">Attendee</Link>
+                                            <Link to='' class="dropdown-item" >Researcher</Link>
+                                            <Link to='' class="dropdown-item" >Workshop Conductor</Link>
+                                        </div>
+                                    </li>
                                     <Link to="/login">
-                                        <input type="button" className="btn btn-outline-light mr-2"  value="Login as Staff"/>
+                                        <input type="button" className="left btn btn-outline-light mr-2"  value="Login as Staff"/>
                                     </Link>
                                     <Link to="/UserLogin">
                                         <input type="button" className="btn btn-outline-light "  value="Login as User"/>

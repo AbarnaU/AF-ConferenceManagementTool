@@ -8,6 +8,7 @@ import Login from './components/user/Login'
 import ConferenceDetails from './components/user/ConferenceDetails'
 import UserLogin from './components/FrontLogin'
 import Download from './components/user/Download';
+import UpcomingEvents from './components/user/UpcomingEvents';
 
 
 import AdminHome from './components/admin/AdminHome'
@@ -42,6 +43,7 @@ function App() {
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/UserLogin" component={UserLogin}/>
                 <Route exact path="/download" component={Download}/>
+                <Route exact path="/upcomingEvent" component={UpcomingEvents}/>
             </div>
         </div>
         {
