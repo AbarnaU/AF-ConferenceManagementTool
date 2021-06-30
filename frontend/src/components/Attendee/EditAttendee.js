@@ -259,7 +259,7 @@ class EditAttendee extends Component {
                 style={{ height: '35px', width: '400px' }}
                 type="submit"
               >
-                Register
+                Update
               </Button>
             </Card.Body>
           </Card>
