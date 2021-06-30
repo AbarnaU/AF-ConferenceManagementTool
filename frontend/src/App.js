@@ -31,7 +31,7 @@ import EditAttendee from './components/Attendee/EditAttendee'
 function App() {
   return (
     <BrowserRouter>
-      <NavBar/
+      <NavBar/>
             <div>
               <div className="container">
                 <Route exact path="/addattendee" component={AddAttendee} />
@@ -40,11 +40,12 @@ function App() {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/conferences/:name" component={ConferenceDetails}/>
                 <Route exact path="/login" component={Login}/>
+                <Route exact path="/UserLogin" component={UserLogin}/>
                 <Route exact path="/download" component={Download}/>
             </div>
         </div>
         {
-                sessionStorage.getItem('userType') === 'researcher' ?
+                sessionStorage.getItem('userType') === 'reviewer' ?
                     (
                         <div className="container">
                             <Switch>

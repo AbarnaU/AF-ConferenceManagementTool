@@ -1,94 +1,97 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React,{Component} from 'react';
+import axios from 'axios';
 import Swal from 'sweetalert2'
 
-class StaffEdit extends Component {
-  constructor(props) {
-    super(props)
+class StaffEdit extends Component{
 
-    this.state = {
-      visible: false,
-      name: '',
-      email: '',
-      password: '',
-      role: '',
-      contact: '',
-      address: '',
+    constructor(props) {
+        super(props);
+        
+        this.state = { 
+            visible: false,
+            name:'',
+            email:'',
+            password:'',
+            role:'',
+            contact:'',
+            address:''
+
+        };
+
+        this.onFormSubmit= this.onFormSubmit.bind(this);
+        this.onValueChange = this.onValueChange.bind(this);
+
+        this.onDismiss = this.onDismiss.bind(this);
     }
 
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.onValueChange = this.onValueChange.bind(this)
-    this.onDismiss = this.onDismiss.bind(this)
-  }
+    componentDidMount(){
+        axios.get('http://localhost:4000/staffs/edit/'+this.props.match.params.id)
+            .then(
+                staff =>{
+                    this.setState({
+                        name:staff.data.name,
+                        email:staff.data.email,
+                        password:staff.data.password,
+                        role:staff.data.role,
+                        contact:staff.data.contact,
+                        address:staff.data.address
+                    })
+                }
+            )
+    }
 
-  componentDidMount() {
-    axios
-      .get('http://localhost:4000/staffs/edit/' + this.props.match.params.id)
-      .then((staff) => {
+    onDismiss() {
+        this.setState({ visible: false });
+    }
+
+    onValueChange(e){
         this.setState({
-          name: staff.data.name,
-          email: staff.data.email,
-          password: staff.data.password,
-          role: staff.data.role,
-          contact: staff.data.contact,
-          address: staff.data.address,
+            [e.target.name]:e.target.value
         })
-      })
-  }
-
-  onDismiss() {
-    this.setState({ visible: false })
-  }
-
-  onValueChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  onFormSubmit(e) {
-    e.preventDefault()
-
-    const name = this.state.name
-    const email = this.state.email
-    const password = this.state.password
-    const role = this.state.role
-    const contact = this.state.contact
-    const address = this.state.address
-
-    const staff = {
-      name,
-      email,
-      password,
-      role,
-      contact,
-      address,
     }
 
-    axios
-      .post(
-        'http://localhost:4000/staffs/update/' + this.props.match.params.id,
-        staff,
-      )
-      .then(
-        (res) => {
-          console.log(res.data)
-          this.setState({
-            visible: true,
-            name: '',
-            email: '',
-            password: '',
-            role: '',
-            contact: '',
-            address: '',
-          })
+    onFormSubmit(e){
+        e.preventDefault();
 
-          Swal.fire('Done', 'Staff Details Updated!', 'success')
-          this.props.history.push('/staff/view')
-        },
-        (err) => console.log(err),
-      )
-  }
+        const name = this.state.name;
+        const email = this.state.email;
+        const password = this.state.password;
+        const role = this.state.role;
+        const contact = this.state.contact;
+        const address = this.state.address;
+
+        const staff={
+            name,
+            email,
+            password,
+            role,
+            contact,
+            address
+        }
+
+        axios.post('http://localhost:4000/staffs/update/'+this.props.match.params.id,staff)
+            .then(
+                res=>{
+                    console.log(res.data)
+                    this.setState({
+                        visible:true,
+                        name:'',
+                        email:'',
+                        password:'',
+                        role:'',
+                        contact:'',
+                        address:''});
+
+                        Swal.fire(
+                            'Done',
+                            'Staff Details Updated!',
+                            'success'
+                            ) 
+                        this.props.history.push('/staff/view');
+                },
+                err=>console.log(err)
+            )        
+    }
 
     render(){
         return(
@@ -154,12 +157,13 @@ class StaffEdit extends Component {
                                         <button type="submit" className="admin-blue-button">Update</button>
                                     </div>   
                                 </form>                            
-                          </div>
-                        </section>
-                      </main>
-                    </div>
-                  )
-                }
-              }
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        );
+    }
+}
 
-export default StaffEdit
+export default StaffEdit;

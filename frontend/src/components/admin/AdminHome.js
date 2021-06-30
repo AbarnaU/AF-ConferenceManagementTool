@@ -21,20 +21,7 @@ class AdminHome extends Component {
                                 <Link to={''}><Button color="success" style={{width:"140px",height:"140px"}}><span><i className="fa fa-graduation-cap"/></span> <br/>Researchers</Button></Link>
                             </div>
                             <div class="col-lg-3 col-md-3 admin-icon">
-                                <Link to={''}><Button color="primary" style={{width:"140px",height:"140px"}}><span ><i className="fa fa-user"/></span> <br/>Bookmark</Button></Link>
-                            </div>
-                             
-                            <div class="col-lg-3 col-md-3 admin-icon">
-                                <Link to={''}><Button color="secondary" style={{width:"140px",height:"140px"}}><span><i className="fa fa-user"/></span> <br/>App</Button></Link>
-                            </div>
-                            <div class="col-lg-3 col-md-3 admin-icon">
-                                <Link to={''}><Button color="dark" style={{width:"140px",height:"140px"}}><span ><i className="fa fa-user"/></span> <br/>Bookmark</Button></Link>
-                            </div>
-                            <div class="col-lg-3 col-md-3 admin-icon">
-                                <Link to={''}><Button color="info" style={{width:"140px",height:"140px"}}><span><i className="fa fa-user"/></span> <br/>App</Button></Link>
-                            </div>
-                            <div class="col-lg-3 col-md-3 admin-icon">
-                                <Link to={''}><Button color="light" style={{width:"140px",height:"140px"}}><span ><i className="fa fa-user"/></span> <br/>Bookmark</Button></Link>
+                                <Link to={''}><Button color="primary" style={{width:"140px",height:"140px"}}><span ><i className="fa fa-user"/></span> <br/>Attendee</Button></Link>
                             </div>
                         </div>    
                     </div>

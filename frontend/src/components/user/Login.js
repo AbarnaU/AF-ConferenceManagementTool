@@ -126,7 +126,7 @@ class Login extends Component {
       <div className="container" style={{ paddingTop: '70px' }}>
         <div class="admin-content-widget admin-login-widget light-gray-bg ">
           <header class="text-center">
-            <h1>ICAF Login</h1>
+            <h1>ICAF Staff Login</h1>
           </header>
           <form class="admin-login-form" onSubmit={this.handleLoginSubmit}>
             <div class="form-group">
@@ -141,7 +141,7 @@ class Login extends Component {
                   onChange={this.onChangeUserType}
                 >
                   <option value="UserType">Select User Type</option>
-                  <option value="researcher">Researcher</option>
+                  <option value="reviewer">Reviewer</option>
                   <option value="editor">Editor</option>
                   <option value="admin">Admin</option>
                 </select>
@@ -188,16 +188,6 @@ class Login extends Component {
               <button type="submit" class="admin-blue-button width-30">
                 Login
               </button>
-            </div>
-
-            <div className="text-center mt-3">
-              <label className="ml-5 mb-3 text-muted">
-                Don't have an account ?
-              </label>
-              <Link to="/register" className="alert-link mr-5">
-                {' '}
-                Sign Up
-              </Link>
             </div>
           </form>
         </div>

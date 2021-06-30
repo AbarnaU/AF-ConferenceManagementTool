@@ -158,16 +158,6 @@ class UserLogin extends Component {
                 Login
               </button>
             </div>
-
-            <div className="text-center mt-3">
-              <label className="ml-5 mb-3 text-muted">
-                Don't have an account ?
-              </label>
-              <Link to="/register" className="alert-link mr-5">
-                {' '}
-                Sign Up
-              </Link>
-            </div>
           </form>
         </div>
       </div>

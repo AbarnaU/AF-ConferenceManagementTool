@@ -1,49 +1,50 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link, withRouter} from "react-router-dom";
 
-class Navbar extends Component {
-  onLogout = (e) => {
-    e.preventDefault()
-    sessionStorage.clear()
-    localStorage.clear()
-    this.props.history.push('/')
-  }
+class Navbar extends Component {    
 
-  render() {
-    const afterLogin = (
-      <div className="mt-2 mt-md-0">
-        <Link to="/profile">
-          <label className="btn-link alert-link text-white pr-2">
-            {' '}
-            {sessionStorage.getItem('loggedUser') + '  '}{' '}
-          </label>
-        </Link>
-        <Link to="/">
-          <input
-            type="button"
-            className="btn btn-outline-light my-2 my-sm-0"
-            onClick={this.onLogout}
-            value="Logout"
-          />
-        </Link>
-      </div>
-    )
+    onLogout = (e) => {
+        e.preventDefault();
+        sessionStorage.clear(); 
+        localStorage.clear(); 
+        this.props.history.push('/')
+    };
 
-    return (
-      <nav className="navbar navbar-expand-md navbar-light bg-info">
-        <Link to="" className="navbar-brand">
-          ICAF
-        </Link>
+    render() {
+        const afterLogin = (
+            
+            <div className="mt-2 mt-md-0">
+                <Link to="/profile">
+                    <label className="btn-link alert-link text-white pr-2"> {sessionStorage.getItem('loggedUser') + "  "} </label>
+                </Link>
+                <Link to="/">
+                    <input type="button" className="btn btn-outline-light my-2 my-sm-0" onClick={this.onLogout} value="Logout"/>
+                </Link>
+            </div>
+        );
+
+        
+        return (
+            <nav className="navbar navbar-expand-md navbar-light bg-info">
+                <Link to="" className="navbar-brand">
+                    ICAF
+                </Link>
                 <div className="collapse navbar-collapse" id="collapse-navbar">
                     {
                         sessionStorage.getItem('userType')  === null ?
                         (
                                 <ul className="navbar-nav text-justify mr-auto">
                                     <li className="navbar-item ">
+                                        <Link to='/addattendee' className="nav-link">Register Attendee</Link>
+                                    </li>
+                                    <li className="navbar-item ">
                                         <Link to='/download' className="nav-link">Templates</Link>
                                     </li>
                                     <Link to="/login">
-                                        <input type="button" className="btn btn-outline-light "  value="Login"/>
+                                        <input type="button" className="btn btn-outline-light mr-2"  value="Login as Staff"/>
+                                    </Link>
+                                    <Link to="/UserLogin">
+                                        <input type="button" className="btn btn-outline-light "  value="Login as User"/>
                                     </Link>
                                 </ul>
                            
@@ -81,4 +82,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar
+export default withRouter(Navbar);
